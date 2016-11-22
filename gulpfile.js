@@ -2,6 +2,7 @@
 const gulp = require('gulp')
 const livereload  = require('gulp-livereload')
 const nodemon = require('gulp-nodemon')
+const stylus = require('gulp-stylus')
 
 //Tarea de inicializacion del servidor
 gulp.task('server', () => {
@@ -19,5 +20,18 @@ gulp.task('server', () => {
 
 });
 
+gulp.task('stylus', () =>{
+  return gulp.src('./css/main.styl')
+    .pipe(stylus({
+      compress: true
+    }))
+    .pipe(gulp.dest('./css/build'));
+  })
 
-gulp.task('default', ['server'])
+gulp.task('watch', () => {
+  gulp.watch(['./css/main.styl'],['stylus'])
+})
+
+
+gulp.task('default', ['server', 'watch'])
+
