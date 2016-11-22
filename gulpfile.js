@@ -20,16 +20,25 @@ gulp.task('server', () => {
 
 });
 
+gulp.task('html', () => {
+  gulp.src('app/index.html')
+    .pipe(livereload());
+  console.log('Recargando html'); 
+});
+
+//Tarea de Stylus y comprension de css
 gulp.task('stylus', () =>{
-  return gulp.src('./css/main.styl')
+  return gulp.src('./app/assets/css/main.styl')
     .pipe(stylus({
       compress: true
     }))
-    .pipe(gulp.dest('./css/build'));
+    .pipe(gulp.dest('./app/assets/css/build'));
   })
 
+//Watch
 gulp.task('watch', () => {
-  gulp.watch(['./css/main.styl'],['stylus'])
+  gulp.watch(['./app/assets/css/main.styl'],['stylus'])
+  gulp.watch(['./app/index.html'], ['html']);
 })
 
 
