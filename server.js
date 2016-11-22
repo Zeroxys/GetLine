@@ -10,6 +10,6 @@ app.get('/', (req,res) => {
 })
 
 //lanzar servidor en puerto 8080
-app.listen(3000,()=> {
+app.listen(port,()=> {
 	console.log(`Servidor corriendo en puerto : ${port}`)
 })
