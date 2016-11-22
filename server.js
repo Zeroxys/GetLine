@@ -5,7 +5,7 @@ const app = express()
 const port = 8080||process.env.PORT
 	
 //Middlewares
-app.use(express.static('app'))
+app.use(express.static('app/'))
 
 //peticiones
 app.get('/', (req,res) => {
