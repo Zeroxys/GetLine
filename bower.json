@@ -1,0 +1,21 @@
+{
+  "name": "getline",
+  "description": "+",
+  "main": "index.js",
+  "authors": [
+    "zeroxys <miguelzavalac@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Zeroxys/GetLine",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "materialize": "^0.97.8"
+  }
+}

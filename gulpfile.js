@@ -4,6 +4,7 @@ const livereload  = require('gulp-livereload')
 const nodemon = require('gulp-nodemon')
 const stylus = require('gulp-stylus')
 const inject = require('gulp-inject')
+const wiredep = require('wiredep').stream
 
 //Tarea de inicializacion del servidor
 gulp.task('server', () => {
@@ -47,12 +48,25 @@ gulp.task('inject', () => {
         .pipe(gulp.dest('./app'))
 })
 
+//tarea wiredep : inyecta librerias de bower
+gulp.task('wiredep', () => {
+
+  gulp.src('./app/index.html')
+    .pipe(wiredep({
+      directory:'./app/lib'
+    }))
+    .pipe(gulp.dest('./app'))
+
+});
+
 //Watch
 gulp.task('watch', () => {
   gulp.watch(['./app/assets/css/main.styl'],['stylus'])
   gulp.watch(['./app/index.html'], ['html']);
+  gulp.watch(['./bower.json'], ['wiredep']);
 })
 
 
-gulp.task('default', ['server', 'watch','inject'])
+//Ejecuta tareas por defecto
+gulp.task('default', ['server', 'watch','inject','wiredep'])
 
